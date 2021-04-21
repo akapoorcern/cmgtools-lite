@@ -495,6 +495,10 @@ ttH_3l_tree = lambda : ttH_genericTreeVarForSR(3,
                                               'not  (event.nJet25_Recl>=2 and (event.nBJetLoose25_Recl >= 2 or event.nBJetMedium25_Recl >= 1) and (event.nJet25_Recl >= 4 or event.MET_pt*0.6 + event.mhtJet25_Recl*0.4 > 30 + 15*(event.mZ1_Recl > 0)) or (event.nBJetMedium25_Recl >= 1 and (event.nJet25_Recl+event.nFwdJet_Recl-event.nBJetLoose25_Recl) > 0))'
 ])
 
+from CMGTools.TTHAnalysis.tools.CP5Node_DNN import CP5Node_DNN
+CP5Node = lambda : CP5Node_DNN(variations = []) # use this for data
+CP5Node_allVars = lambda : CP5Node_DNN( variations = [ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'])
+
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.mvaCP_2lss import mvaCP_2lss
 MVAcp_2lss = lambda : mvaCP_2lss(variations = []) # for data
@@ -507,4 +511,3 @@ MVAcp_3l_allvars = lambda : mvaCP_3l(variations = [ 'jes%s'%v for v in jecGroups
 from CMGTools.TTHAnalysis.tools.nanoAOD.mvaCP_2lss1tau import mvaCP_2lss1tau
 MVAcp_2lss1tau = lambda : mvaCP_2lss1tau(variations = []) # for data
 MVAcp_2lss1tau_allvars = lambda : mvaCP_2lss1tau(variations = [ 'jes%s'%v for v in jecGroups] + ['jer%s'%x for x in ['barrel','endcap1','endcap2highpt','endcap2lowpt' ,'forwardhighpt','forwardlowpt']  ]  + ['HEM'])
-
